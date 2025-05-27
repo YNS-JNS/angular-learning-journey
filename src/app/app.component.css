@@ -1,0 +1,13 @@
+/* src/app/app.component.css */
+.important-task {
+    color: green;
+    font-style: italic;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  hr {
+    margin: 20px 0;
+  }
