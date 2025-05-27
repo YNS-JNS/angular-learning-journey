@@ -24,9 +24,18 @@ export class AppComponent {
   logoUrl: string = 'assets/logo.jpg'; // Supposez que vous avez un logo.png dans src/assets/
   isButtonDisabled: boolean = false;
 
+  // Propriétés pour *ngIf
+  isLoggedIn: boolean = true;
+  username: string = 'John';
+
   // Méthode pour la liaison d'événement
   onButtonClick(): void {
     alert('Bouton cliqué !');
     this.isButtonDisabled = true; // Désactiver le bouton après le clic
+  }
+
+  // Méthode pour changer l'état de connexion
+  toggleLogin(): void {
+    this.isLoggedIn = !this.isLoggedIn;
   }
 }

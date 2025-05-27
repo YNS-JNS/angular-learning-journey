@@ -11,7 +11,21 @@
   <button [disabled]="isButtonDisabled" (click)="onButtonClick()">Cliquez-moi !</button>
 
   <hr>
-  
+
+   <!-- *ngIf -->
+   <h3>Gestion de Connexion (avec *ngIf)</h3>
+   <div *ngIf="isLoggedIn; else loggedOutContent">
+     <p>Bienvenue, {{ username }} ! Vous êtes connecté.</p>
+   </div>
+   <ng-template #loggedOutContent>
+     <p>Vous n'êtes pas connecté. Veuillez vous connecter.</p>
+   </ng-template>
+   <button (click)="toggleLogin()">
+     {{ isLoggedIn ? 'Se déconnecter' : 'Se connecter' }}
+   </button>
+ 
+   <hr>
+
 </main>
 
 <app-footer></app-footer>
