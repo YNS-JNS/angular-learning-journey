@@ -1,7 +1,52 @@
-<app-header></app-header>
+<!-- src/app/app.component.html -->
+<app-header></app-header> <!-- Notre composant Header existant -->
 
 <main>
-  {{userName}}
+  <!-- Interpolation -->
+  <h2>{{ titrePrincipal }}</h2>
+
+  <!-- Liaison de Propriété -->
+  <img [src]="logoUrl" alt="Logo de l'application" width="100">
+  <br>
+  <!-- Liaison de Propriété et Liaison d'Événement -->
+  <button [disabled]="isButtonDisabled" (click)="onButtonClick()">Cliquez-moi !</button>
+
+  <hr>
+
+  <!-- *ngIf -->
+  <h3>Gestion de Connexion (avec *ngIf)</h3>
+  <div *ngIf="isLoggedIn; else loggedOutContent">
+    <p>Bienvenue, {{ username }} ! Vous êtes connecté.</p>
+  </div>
+  <ng-template #loggedOutContent>
+    <p>Vous n'êtes pas connecté. Veuillez vous connecter.</p>
+  </ng-template>
+  <button (click)="toggleLogin()">
+    {{ isLoggedIn ? 'Se déconnecter' : 'Se connecter' }}
+  </button>
+
+  <hr>
+
+  <!-- *ngFor et [(ngModel)] pour la liaison bidirectionnelle -->
+  <h3>Liste de Tâches (avec *ngFor et [(ngModel)])</h3>
+  <div>
+    <input type="text" [(ngModel)]="nouvelleTache" placeholder="Nouvelle tâche">
+    <button (click)="ajouterTache()">Ajouter Tâche</button>
+  </div>
+  <ul>
+    <li *ngFor="let tache of taches; let i = index">
+      {{ i + 1 }}. {{ tache }}
+      <!-- Bonus: ngStyle et ngClass (directive d'attribut) -->
+      <span
+        [ngStyle]="{ 'font-weight': tache.includes('Angular') ? 'bold' : 'normal' }"
+        [ngClass]="{ 'important-task': tache.includes('Angular') }"
+      >
+        ({{ tache.length }} caractères)
+      </span>
+    </li>
+  </ul>
+  <p *ngIf="taches.length === 0">Aucune tâche pour le moment.</p>
+
 </main>
 
-<app-footer></app-footer>
+<app-footer></app-footer> <!-- Notre composant Footer existant -->
