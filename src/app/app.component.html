@@ -1,7 +1,17 @@
 <app-header></app-header>
 
 <main>
-  {{userName}}
+  <!-- Interpolation -->
+  <h2>{{ titrePrincipal }}</h2>
+
+  <!-- Liaison de Propriété -->
+  <img [src]="logoUrl" alt="Logo de l'application" width="100">
+  <br>
+  <!-- Liaison de Propriété et Liaison d'Événement -->
+  <button [disabled]="isButtonDisabled" (click)="onButtonClick()">Cliquez-moi !</button>
+
+  <hr>
+  
 </main>
 
 <app-footer></app-footer>

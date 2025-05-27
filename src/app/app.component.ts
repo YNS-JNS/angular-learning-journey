@@ -19,5 +19,14 @@ import { FooterComponent } from './footer/footer.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  userName = 'Yns';
+  // Propriétés pour l'interpolation et la liaison de propriété
+  titrePrincipal: string = 'Ma super App Dynamique';
+  logoUrl: string = 'assets/logo.jpg'; // Supposez que vous avez un logo.png dans src/assets/
+  isButtonDisabled: boolean = false;
+
+  // Méthode pour la liaison d'événement
+  onButtonClick(): void {
+    alert('Bouton cliqué !');
+    this.isButtonDisabled = true; // Désactiver le bouton après le clic
+  }
 }
